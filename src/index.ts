@@ -28,7 +28,7 @@ function addProduct(event: Event): void {
 
     // validering
     if (name === "") {
-        nameError.textContent = "Produktnamn får inte vara tomt."
+        nameError.textContent = "Produktnamn får inte vara tomt"
         return;
     }
     if (priceString === "" || isNaN(parseFloat(priceString))) {
@@ -67,6 +67,17 @@ function addProduct(event: Event): void {
     products.push(newProduct);
     renderProducts(); // ritar om listan
 
+    // utan destructuring 
+    const pId = newProduct.id;
+    const pName = newProduct.name;
+    const pPrice = newProduct.price;
+    console.log(pId, pName, pPrice);
+
+    // https://www.w3schools.com/js/js_destructuring.asp
+    // med destructuring
+    const { name: productName, price: productPrice } = newProduct;
+    console.log(productName, productPrice);
+
     // tömma formuläret
     productNameInput.value = "";
     productPriceInput.value = "";
@@ -104,6 +115,27 @@ function renderProducts(): void {
         `;
         productList.appendChild(listItem);
     });
+
+    const colors = ["röd", "grön", "blå", "lila", "rosa", "gul"];
+    // utan destructuring
+    // const firstColor = colors[0];
+    // const secondColor = colors[1];
+    // console.log(firstColor, secondColor);
+
+    // med destructuring
+    const [firstColor, secondColor] = colors;
+    console.log(firstColor, secondColor);
+
+    // hoppa över värden
+    const [, , , , thirdColor] = colors;
+    console.log(thirdColor);
+    const [first, , , , , last] = colors;
+    console.log(first, last);
+
+    // rest-operatorn (...)
+    const [primary, ...restOfThem] = ["first", "second", "third", "fourth"];
+    console.log(primary);
+    console.log(restOfThem);
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
@@ -117,7 +149,7 @@ function handleProductAction(event: MouseEvent): void {
     if (!listItem) return; // se till att vi klickade på något inom ett listobjekt
     // få ut id:t
     const productId = parseInt(listItem.dataset.productId || "0");
-    
+
     if (action === "toggle-stock") {
         const productIndex = products.findIndex(p => p.id === productId);
         console.log(productIndex);
