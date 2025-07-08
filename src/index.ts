@@ -9,7 +9,6 @@ interface Product {
 // Array för att lagra alla produkter
 let products: Product[] = [];
 
-
 // Hämta alla referenser till DOM-element
 const productForm = document.getElementById("product-form") as HTMLFormElement;
 const productNameInput = document.getElementById("product-name") as HTMLInputElement;
@@ -18,7 +17,6 @@ const productList = document.getElementById("product-list") as HTMLUListElement;
 const nameError = document.getElementById("name-error") as HTMLParagraphElement;
 const priceError = document.getElementById("price-error") as HTMLParagraphElement;
 const emptyListMessage = document.getElementById("empty-list-message") as HTMLParagraphElement;
-
 
 // funktion för att lägga till en ny produkt
 function addProduct(event: Event): void {
@@ -73,7 +71,7 @@ function addProduct(event: Event): void {
     const pPrice = newProduct.price;
     console.log(pId, pName, pPrice);
 
-    // https://www.w3schools.com/js/js_destructuring.asp
+    //https://www.w3schools.com/js/js_destructuring.asp
     // med destructuring
     const { name: productName, price: productPrice } = newProduct;
     console.log(productName, productPrice);

@@ -58,7 +58,7 @@ function addProduct(event) {
     const pName = newProduct.name;
     const pPrice = newProduct.price;
     console.log(pId, pName, pPrice);
-    // https://www.w3schools.com/js/js_destructuring.asp
+    //https://www.w3schools.com/js/js_destructuring.asp
     // med destructuring
     const { name: productName, price: productPrice } = newProduct;
     console.log(productName, productPrice);
